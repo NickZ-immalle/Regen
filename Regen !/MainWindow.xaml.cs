@@ -20,9 +20,35 @@ namespace Regen__
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Random randomNuber = new Random();
+        private double x, y, size;
+        private SolidColorBrush brush;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Start();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            paperCanvas.Children.Clear();
+        }
+
+        private DispatcherTimer timer = new DispatcherTimer();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            gapLabel.Content = Convert.ToString(gapSlider.Value);
+            brush = new SolidColorBrush(Colors.Cornsilk);
+            timer.Interval = TimeSpan.FromMilliseconds(gapSlider.Value);
+            timer.Tick += timer_Tick;
         }
     }
 }
