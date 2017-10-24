@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Regen__
 {
@@ -20,9 +21,20 @@ namespace Regen__
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Random randomNuber = new Random();
+        private Random randomNumber = new Random();
         private double x, y, size;
         private SolidColorBrush brush;
+        private DispatcherTimer timer = new DispatcherTimer();
+        
+        public MainWindow()
+        {
+            InitializeComponent();
+            
+            gapLabel.Content = Convert.ToString(gapSlider.Value);
+            brush = new SolidColorBrush(Colors.Red);
+            timer.Interval = TimeSpan.FromMilliseconds(gapSlider.Value);
+            timer.Tick += Timer_Tick;
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -37,18 +49,41 @@ namespace Regen__
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             paperCanvas.Children.Clear();
-        }
+        } 
 
-        private DispatcherTimer timer = new DispatcherTimer();
-
-        public MainWindow()
+        private void Timer_Tick(object sender, EventArgs e)
         {
-            InitializeComponent();
+        
+         x = randomNumber.Next(0, Convert.ToInt32(paperCanvas.Width));
+         y = randomNumber.Next(0, Convert.ToInt32(paperCanvas.Height));
+            size = randomNumber.Next(1, 40);
 
-            gapLabel.Content = Convert.ToString(gapSlider.Value);
-            brush = new SolidColorBrush(Colors.Cornsilk);
-            timer.Interval = TimeSpan.FromMilliseconds(gapSlider.Value);
-            timer.Tick += timer_Tick;
+            Ellipse ellipse = new Ellipse
+            {
+                Width = size,
+                Height = size,
+                Stroke = brush,
+                Fill = brush,
+                Margin = new Thickness(x, y, 0, 0)
+            };
+            paperCanvas.Children.Add(ellipse);
+
+            timer.Stop();
+            int ms = randomNumber.Next(1, Convert.ToInt32(gapSlider.Value));
+            timer.Interval = TimeSpan.FromMilliseconds(ms);
+            timer.Start();
         }
+
+        
+
+        private void gapSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            int timeGap = Convert.ToInt32(gapSlider.Value);
+            gapLabel.Content = Convert.ToString(timeGap);
+        }
+
+        
+
+       
     }
 }
