@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Regen__"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <Grid Background="#FFB4B4B4">
         <Slider x:Name="gapSlider" HorizontalAlignment="Left" Height="18" Margin="0,234,0,0" VerticalAlignment="Top" Width="84" ValueChanged="gapSlider_ValueChanged"/>
         <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Height="26" Margin="10,36,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click"/>
         <Button x:Name="stopButton" Content="Stop" HorizontalAlignment="Left" Height="24" Margin="10,67,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.872,0.568" Click="Button_Click_1"/>
