@@ -8,9 +8,9 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid Background="#FFB4B4B4">
         <Slider x:Name="gapSlider" HorizontalAlignment="Left" Height="18" Margin="0,234,0,0" VerticalAlignment="Top" Width="84" ValueChanged="gapSlider_ValueChanged"/>
-        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Height="26" Margin="10,36,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click"/>
-        <Button x:Name="stopButton" Content="Stop" HorizontalAlignment="Left" Height="24" Margin="10,67,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.872,0.568" Click="Button_Click_1"/>
-        <Button x:Name="clearButton" Content="Clear" HorizontalAlignment="Left" Height="27" Margin="9,96,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click_2"/>
+        <Button x:Name="Button" Content="Start" HorizontalAlignment="Left" Height="26" Margin="10,36,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click"/>
+        <Button x:Name="Button1" Content="Stop" HorizontalAlignment="Left" Height="24" Margin="10,67,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.872,0.568" Click="Button_Click_1"/>
+        <Button x:Name="Button2" Content="Clear" HorizontalAlignment="Left" Height="27" Margin="9,96,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click_2"/>
         <Canvas x:Name="paperCanvas" Margin="84,10,10,10" Background="#FFB4B4B4"/>
         <Label x:Name="gapLabel" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,266,0,0" Width="70"/>
 

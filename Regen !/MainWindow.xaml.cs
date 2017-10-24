@@ -24,7 +24,8 @@ namespace Regen__
         private Random randomNumber = new Random();
         private double x, y, size;
         private SolidColorBrush brush;
-     private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             timer.Start();
         }
@@ -62,17 +63,15 @@ namespace Regen__
         
          x = randomNumber.Next(0, Convert.ToInt32(paperCanvas.Width));
          y = randomNumber.Next(0, Convert.ToInt32(paperCanvas.Height));
-            size = randomNumber.Next(1, 40);
+         size = randomNumber.Next(1, 40);
 
-            Ellipse ellipse = new Ellipse
-            {
-                Width = size,
-                Height = size,
-                Stroke = brush,
-                Fill = brush,
-                Margin = new Thickness(x, y, 0, 0)
-            };
-            paperCanvas.Children.Add(ellipse);
+            Ellipse ellipse = new Ellipse();
+            ellipse.Width = size;
+            ellipse.Height = size;
+            ellipse.Stroke = brush;
+            ellipse.Fill = brush;
+            ellipse.Margin = new Thickness(x, y, 0, 0);
+            mijnCanvas.Children.Add(ellipse);
 
             timer.Stop();
             int ms = randomNumber.Next(1, Convert.ToInt32(gapSlider.Value));
